@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import CustomDropdown from '../components/CustomDropDown';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const AddPostScreen = () => {
   const [selectedType, setSelectedType] = useState('Type 1');
@@ -27,47 +28,49 @@ const AddPostScreen = () => {
   ];
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.header}>Create a New Post</Text>
+    <SafeAreaView>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.header}>Create a New Post</Text>
 
-      <CustomDropdown
-        label="Select Type"
-        options={typeOptions}
-        selectedValue={selectedType}
-        onValueChange={setSelectedType}
-      />
-
-      <CustomDropdown
-        label="Select Category"
-        options={categoryOptions}
-        selectedValue={selectedCategory}
-        onValueChange={setSelectedCategory}
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder="News Title"
-        placeholderTextColor="#aaa"
-      />
-
-      <TextInput
-        style={[styles.input, styles.textArea]}
-        placeholder="Insert News Content Here..."
-        placeholderTextColor="#aaa"
-        multiline
-        numberOfLines={6}
-      />
-
-      <View style={styles.imageContainer}>
-        <TouchableOpacity style={styles.imageButton}>
-          <Text style={styles.imageButtonText}>Select Image</Text>
-        </TouchableOpacity>
-        <Image
-          source={{uri: 'https://via.placeholder.com/120'}}
-          style={styles.imagePreview}
+        <CustomDropdown
+          label="Select Type"
+          options={typeOptions}
+          selectedValue={selectedType}
+          onValueChange={setSelectedType}
         />
-      </View>
-    </ScrollView>
+
+        <CustomDropdown
+          label="Select Category"
+          options={categoryOptions}
+          selectedValue={selectedCategory}
+          onValueChange={setSelectedCategory}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="News Title"
+          placeholderTextColor="#aaa"
+        />
+
+        <TextInput
+          style={[styles.input, styles.textArea]}
+          placeholder="Insert News Content Here..."
+          placeholderTextColor="#aaa"
+          multiline
+          numberOfLines={6}
+        />
+
+        <View style={styles.imageContainer}>
+          <TouchableOpacity style={styles.imageButton}>
+            <Text style={styles.imageButtonText}>Select Image</Text>
+          </TouchableOpacity>
+          <Image
+            source={{uri: 'https://via.placeholder.com/120'}}
+            style={styles.imagePreview}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
   },
   header: {
     fontSize: 28,
